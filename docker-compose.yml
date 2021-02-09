@@ -10,7 +10,7 @@ services:
       - /usr/users/burg:/usr/users/burg
       - /usr/users/agecker:/usr/users/agecker
       - /user/burg/data:/data
-    env_file: .env
+    env_file: /usr/users/burg/.env
     runtime: nvidia
     environment:
       - DISPLAY=$DISPLAY
@@ -39,7 +39,7 @@ services:
       - /usr/users/burg:/usr/users/burg
       - /usr/users/agecker:/usr/users/agecker
       - /user/burg/data:/data
-    env_file: .env
+    env_file: /usr/users/burg/.env
     environment:
       - DISPLAY=$DISPLAY
       - USER=BURG
