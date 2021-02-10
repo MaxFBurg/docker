@@ -43,6 +43,7 @@ RUN conda install \
 	scipy \
 	tensorboard \
 	tqdm \
+        xeus-python \
  && conda clean -tipsy \
  && fix-permissions $CONDA_DIR \
  && fix-permissions /home/$NB_USER
@@ -62,6 +63,8 @@ RUN pip install --no-cache-dir datajoint==0.12.4 \
 
 RUN rm /usr/bin/python3 && ln -s /opt/conda/bin/python
 
+
+RUN jupyter labextension install @jupyterlab/debugger
 
 # switch back to default user (jovyan)
 USER $NB_USER
