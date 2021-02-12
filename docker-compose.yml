@@ -39,7 +39,7 @@ services:
     container_name: burg-gpu-0
     shm_size: 128G
     user: root
-    working_dir: /
+    working_dir: /  # must be one dir above any mounted dir
   
   cpu-goe:
     build:
@@ -77,4 +77,4 @@ services:
     container_name: burg-cpu
     shm_size: 128G
     user: root
-    working_dir: /
+    working_dir: /  # must be one dir above any mounted dir
