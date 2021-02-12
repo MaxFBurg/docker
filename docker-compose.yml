@@ -7,10 +7,21 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - /usr/users/burg:/usr/users/burg
-      - /usr/users/agecker:/usr/users/agecker
-      - /user/burg/data:/data
-      - /user/burg/.cache:/home/burg/.cache
+      - type: bind
+        source: /usr/users/burg/projects
+        target: /projects
+        bind:
+          propagation: shared
+      - type: bind
+        source: /user/burg/data
+        target: /data
+        bind:
+          propagation: shared
+      - type: bind
+        source: /usr/users/agecker
+        target: /agecker
+        bind:
+          propagation: shared
     env_file: /usr/users/burg/.env
     runtime: nvidia
     environment:
@@ -28,7 +39,7 @@ services:
     container_name: burg-gpu-0
     shm_size: 128G
     user: root
-    working_dir: /usr/users/
+    working_dir: /
   
   cpu-goe:
     build:
@@ -37,10 +48,21 @@ services:
     ports:
       - "9999:8888"
     volumes:
-      - /usr/users/burg:/usr/users/burg
-      - /usr/users/agecker:/usr/users/agecker
-      - /user/burg/data:/data
-      - /user/burg/.cache:/home/burg/.cache
+      - type: bind
+        source: /usr/users/burg/projects
+        target: /projects
+        bind:
+          propagation: shared
+      - type: bind
+        source: /user/burg/data
+        target: /data
+        bind:
+          propagation: shared
+      - type: bind
+        source: /usr/users/agecker
+        target: /agecker
+        bind:
+          propagation: shared
     env_file: /usr/users/burg/.env
     environment:
       - DISPLAY=$DISPLAY
@@ -55,4 +77,4 @@ services:
     container_name: burg-cpu
     shm_size: 128G
     user: root
-    working_dir: /usr/users/
+    working_dir: /
