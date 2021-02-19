@@ -6,4 +6,4 @@ GROUPNAME=ECKERLAB
 GROUPID=$(cut -d: -f3 < <(getent group $GROUPNAME))
 
 # Docker exec as current user with primary group as specified above
-docker exec -it --user `id -u`:$GROUPID $@
+docker exec -it --user `id -u` -e HOME=/home/$USER $@
